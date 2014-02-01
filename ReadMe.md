@@ -1,13 +1,26 @@
-BeetBox
+TalkBox
 =======
 
-This is probably not especially useful to anyone, but may be interesting to those curious about the inner workings of the [Beetbox](http://scott.j38.net/interactive/beetbox/).
+This project is a fork of the [Beetbox](http://scott.j38.net/interactive/beetbox/) project by ScottGarner and his port of the MPR121 library based on [an Arduino example by Jim Lindblom](http://bildr.org/2011/05/mpr121_arduino/).
 
-The code for interfacing with the MPR121 is based on [an Arduino example by Jim Lindblom](http://bildr.org/2011/05/mpr121_arduino/).
+The idea is to make a modular and easy-to-assemble device to enable students with cognitive, physical or developmental disabilities. Eventually, it could be used for anything from a communication aid, a teaching aid, to being a project on its own for assembly by the students.
 
-Fixes by hlessil
-================
+Instructions
+============
 
+To be updated once the project takes shape:
+
+- Download the TalkBox image.
+- dd image onto SD card.
+- Plug MPR121 board into GPIO
+- Plug into electricity and use
+- For modifications modify JSON, use GUI, or web interface (will pick and develop one for now).
+
+
+Version Updates
+===============
+
+v0.2:
 - Fixed bug where pins 8-11 were inaccessible due to reading of only one byte instead of a word.
 - Added script that should be added to /etc/init.d to make beetbox a linux daemon (start on boot) based on instructions found here: http://blog.scphillips.com/2013/07/getting-a-python-script-to-run-in-the-background-as-a-service-on-boot/
 - Changed sound files to numbers, made them absolute paths in the code as a quick dirty hack for daemon.
