@@ -3,7 +3,14 @@ TalkBox
 
 This project is a fork of the [Beetbox](http://scott.j38.net/interactive/beetbox/) project by ScottGarner and his port of the MPR121 library based on [an Arduino example by Jim Lindblom](http://bildr.org/2011/05/mpr121_arduino/).
 
-The idea is to make a modular and easy-to-assemble device to enable students with cognitive, physical or developmental disabilities. Eventually, it could be used for anything from a communication aid, a teaching aid, to being a project on its own for assembly by the students.
+The idea is to make a modular and easy-to-assemble device to enable students with cognitive, physical or developmental disabilities. Eventually, it could be used for anything from a communication aid, a teaching aid, to being a project on its own for assembly by students.
+
+Hardware
+========
+- [MPR121 Capacitive Touch Sensor Breakout Board](https://www.sparkfun.com/products/9695)
+- [RaspberryPi](http://www.raspberrypi.org/)
+- some headers and wires
+
 
 Instructions
 ============
