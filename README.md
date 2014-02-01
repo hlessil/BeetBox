@@ -29,7 +29,7 @@ Version Updates
 
 v0.2:
 - Fixed bug where pins 8-11 were inaccessible due to reading of only one byte instead of a word.
-- Added script that should be added to /etc/init.d to make beetbox a linux daemon (start on boot) based on instructions found here: http://blog.scphillips.com/2013/07/getting-a-python-script-to-run-in-the-background-as-a-service-on-boot/
+- Added script that should be added to /etc/init.d to make TalkBox a linux daemon (start on boot) based on instructions found here: http://blog.scphillips.com/2013/07/getting-a-python-script-to-run-in-the-background-as-a-service-on-boot/
 - Changed sound files to numbers, made them absolute paths in the code as a quick dirty hack for daemon.
 
 TIPS
