@@ -69,6 +69,15 @@ def readData(address):
 
 	return touchData;
 
+def readWordData(address):
+        MSB = bus.read_word_data(address, 0x00)
+        LSB = bus.read_word_data(address, 0x01)
+
+        #touchData = (MSB << 8) | LSB
+        touchData = MSB;
+
+        return touchData;
+
 def setup(address):
 
 	bus.write_byte_data(address, ELE_CFG, 0x00)

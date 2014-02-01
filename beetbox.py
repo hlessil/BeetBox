@@ -26,22 +26,27 @@ mpr121.setup(0x5a)
 pygame.mixer.pre_init(44100, -16, 12, 512)
 pygame.init()
 
-kick = pygame.mixer.Sound('samples/kick.wav')
-kick.set_volume(.65);
-snare = pygame.mixer.Sound('samples/snare.wav')
-snare.set_volume(.65);
-openhh = pygame.mixer.Sound('samples/open.wav')
-openhh.set_volume(.65);
-closedhh = pygame.mixer.Sound('samples/closed.wav')
-closedhh.set_volume(.65);
-clap = pygame.mixer.Sound('samples/clap.wav')
-clap.set_volume(.65);
-cymbal = pygame.mixer.Sound('samples/cymbal.wav')
-cymbal.set_volume(.65);
+sounds = []
+
+sounds.append(pygame.mixer.Sound('/home/pi/devt/BeetBox/samples/0.wav'))
+sounds.append(pygame.mixer.Sound('/home/pi/devt/BeetBox/samples/1.wav'))
+sounds.append(pygame.mixer.Sound('/home/pi/devt/BeetBox/samples/2.wav'))
+sounds.append(pygame.mixer.Sound('/home/pi/devt/BeetBox/samples/3.wav'))
+sounds.append(pygame.mixer.Sound('/home/pi/devt/BeetBox/samples/4.wav'))
+sounds.append(pygame.mixer.Sound('/home/pi/devt/BeetBox/samples/5.wav'))
+sounds.append(pygame.mixer.Sound('/home/pi/devt/BeetBox/samples/6.wav'))
+sounds.append(pygame.mixer.Sound('/home/pi/devt/BeetBox/samples/7.wav'))
+sounds.append(pygame.mixer.Sound('/home/pi/devt/BeetBox/samples/8.wav'))
+sounds.append(pygame.mixer.Sound('/home/pi/devt/BeetBox/samples/9.wav'))
+sounds.append(pygame.mixer.Sound('/home/pi/devt/BeetBox/samples/10.wav'))
+sounds.append(pygame.mixer.Sound('/home/pi/devt/BeetBox/samples/11.wav'))
+
+for sound in sounds:
+	sound.set_volume(.65)
 
 # Track touches
 
-touches = [0,0,0,0,0,0];
+touches = [0,0,0,0,0,0,0,0,0,0,0,0];
 
 while True:
 
@@ -49,27 +54,16 @@ while True:
 		pass
 	else: # Interupt pin is low
 
-		touchData = mpr121.readData(0x5a)
+		touchData = mpr121.readWordData(0x5a)
 
-		for i in range(6):
+		for i in range(12):
 			if (touchData & (1<<i)):
 
 				if (touches[i] == 0):
 
 					print( 'Pin ' + str(i) + ' was just touched')
 
-					if (i == 0):
-						kick.play()
-					elif (i == 1):
-						snare.play()
-					elif (i == 2):
-						openhh.play()
-					elif (i == 3):
-						closedhh.play()
-					elif (i == 4):
-						clap.play()
-					elif (i == 5):
-						cymbal.play()
+					sounds[i].play()
 
 				touches[i] = 1;
 			else:
