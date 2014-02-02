@@ -11,10 +11,10 @@ import mpr121
 
 # Simplest to manage as globals in such a small script
 sound_index = 0
-volume_level = .65
+volume_level = .60
 
 def get_soundsets(soundset_dir):
-	"Get relevant soundsets, search in sounds directory."
+	"Get relevant soundsets configurations contained in soundset_dir path."
 	soundsets = []
 	CONF_JSON = 'soundconf.json'
 	soundset_dirs = ['/home/pi/TalkBox/sounds']
@@ -44,18 +44,29 @@ def prev_soundset():
 	return sounds
 
 def extract_sound(soundset):
-	global volume_level
 	sounds = {}
 	for key, value in soundset['sounds'].iteritems():
 		sound = create_sound(soundset['rootdir'] + os.sep + value['filename'])
 	        sounds[int(key)] = sound
 	return sounds
 
-def inc_volume():
-	pass
+def inc_volume(sounds):
+	global volume_level
+	volume_level = min(1.0, volume_level + 0.1)
+	for sound in sounds.values():
+		sound.set_volume(volume_level)
+	pop_sound.set_volume(volume_level)
+	pop_sound.play()
+	return sounds
 
-def dec_volume():
-	pass
+def dec_volume(sounds):
+	global volume_level
+	volume_level = max(0.0, volume_level - 0.1)
+	for sound in sounds.values():
+                sound.set_volume(volume_level)
+	pop_sound.set_volume(volume_level)
+        pop_sound.play()
+	return sounds
 
 def create_sound(sound_path):
 	sound = pygame.mixer.Sound(sound_path)
@@ -79,6 +90,7 @@ pygame.mixer.pre_init(44100, -16, 12, 512)
 pygame.init()
 
 
+pop_sound = create_sound('sounds/pop.wav')
 soundsets = get_soundsets('/home/pi/TalkBox/sounds')
 # TODO soundsets = soundsets + get_soundsets('/path/to/USB/mount')
 sounds = next_soundset()
@@ -105,13 +117,13 @@ while True:
 					if (i < 8):
 						sounds[i].play()
 					elif (i == 8):
-						sounds = next_soundset()
-					elif (i == 9):
 						sounds = prev_soundset()
+					elif (i == 9):
+						sounds = next_soundset()
 					elif (i == 10):
-						inc_volume()
+						sounds = dec_volume(sounds)
 					elif (i == 11):
-						dec_volume()
+						sounds = inc_volume(sounds)
 
 				touches[i] = 1;
 			else:
