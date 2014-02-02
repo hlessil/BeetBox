@@ -15,7 +15,7 @@ Hardware
 Instructions
 ============
 
-To be updated once the project takes shape:
+To be updated as the project takes shape:
 
 - Download the TalkBox image.
 - dd image onto SD card.
