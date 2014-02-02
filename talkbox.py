@@ -112,7 +112,7 @@ while True:
 
 				if (touches[i] == 0):
 
-					print( 'Pin ' + str(i) + ' was just touched')
+					#print( 'Pin ' + str(i) + ' was just touched')
 
 					if (i < 8):
 						sounds[i].play()
@@ -127,6 +127,6 @@ while True:
 
 				touches[i] = 1;
 			else:
-				if (touches[i] == 1):
-					print( 'Pin ' + str(i) + ' was just released')
+				#if (touches[i] == 1):
+					#print( 'Pin ' + str(i) + ' was just released')
 				touches[i] = 0;
