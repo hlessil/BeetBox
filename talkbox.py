@@ -31,22 +31,23 @@ def next_soundset():
 	global sound_index
 	sound_index = (sound_index + 1) % len(soundsets)
 	sounds = extract_sound(soundsets[sound_index])
+        soundset_filename = soundsets[sound_index]['rootdir'] + os.sep + soundsets[sound_index]['soundset_filename']
+        create_sound(soundset_filename).play()
 	return sounds
 
 def prev_soundset():
 	global sound_index
 	sound_index = (sound_index - 1) % len(soundsets)
         sounds = extract_sound(soundsets[sound_index])
+	soundset_filename = soundsets[sound_index]['rootdir'] + os.sep + soundsets[sound_index]['soundset_filename']
+	create_sound(soundset_filename).play()
 	return sounds
 
 def extract_sound(soundset):
 	global volume_level
 	sounds = {}
-	print "tk_", soundset
 	for key, value in soundset['sounds'].iteritems():
-		print "tk_2", key, value
-		sound = pygame.mixer.Sound(soundset['rootdir'] + os.sep + value['filename'])
-		sound.set_volume(volume_level)
+		sound = create_sound(soundset['rootdir'] + os.sep + value['filename'])
 	        sounds[int(key)] = sound
 	return sounds
 
@@ -55,6 +56,11 @@ def inc_volume():
 
 def dec_volume():
 	pass
+
+def create_sound(sound_path):
+	sound = pygame.mixer.Sound(sound_path)
+	sound.set_volume(volume_level)
+	return sound
 
 # Use GPIO Interrupt Pin
 
