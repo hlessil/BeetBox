@@ -17,7 +17,7 @@ To actually add it to rc.d directories, run:
 
 And you are done!
 
-In case you make modifications to BeetBox, run:
+In case you make modifications to TalkBox, run:
 ```sudo /etc/init.d/talkbox.sh stop; sudo /etc/init.d/talkbox.sh start;```
 
 or just reboot the Pi.
