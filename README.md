@@ -27,6 +27,10 @@ To be updated as the project takes shape:
 Version Updates
 ===============
 
+v0.3
+- Added support for multiple user-supplied soundsets (defined by a directory with specific json file)
+- Added volume controls.
+
 v0.2:
 - Fixed bug where pins 8-11 were inaccessible due to reading of only one byte instead of a word.
 - Added script that should be added to /etc/init.d to make TalkBox a linux daemon (start on boot) based on instructions found here: http://blog.scphillips.com/2013/07/getting-a-python-script-to-run-in-the-background-as-a-service-on-boot/
