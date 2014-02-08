@@ -6,8 +6,26 @@ import os
 import json
 import pygame
 
+import evdev
+import math
+import glob
+import time
+
 import RPi.GPIO as GPIO
 import mpr121
+
+# Some constants
+LMC = 0;
+RMC = 1;
+SCRU = 2;
+SCRD = 3;
+
+# Initialize the mouse - count on only one mouse being plugged in
+paths = glob.glob('/dev/input/by-path/*-event-mouse')
+dev = None
+if(len(paths) > 0):
+	dev = evdev.InputDevice(paths[0])
+	print "Using device ", paths[0]
 
 # Simplest to manage as globals in such a small script
 sound_index = 0
@@ -98,11 +116,42 @@ sounds = next_soundset()
 
 # Track touches
 touches = [0,0,0,0,0,0,0,0,0,0,0,0];
+# Each click is two events (push down and push up). This is to ensure one action per two events.
+rem_events = {LMC: 0, RMC: 0, SCRU: 0, SCRD: 0}
 
 while True:
 
 	if (GPIO.input(7)): # Interupt pin is high
-		pass
+		# Terribly inefficient to allocate within loop. FIXME
+                relevant_events = []
+                try:
+                        for event in dev.read():
+                                if event.code == evdev.ecodes.ecodes['BTN_LEFT']:
+                                        rem_events[LMC] = rem_events[LMC] + 1
+                                elif event.code == evdev.ecodes.ecodes['BTN_RIGHT']:
+                                        rem_events[RMC] = rem_events[RMC] + 1
+                                elif event.code == evdev.ecodes.ecodes['REL_WHEEL'] and event.value == 1:
+                                        rem_events[SCRU] = rem_events[SCRU] + 1
+                                elif event.code == evdev.ecodes.ecodes['REL_WHEEL'] and event.value == -1:
+                                        rem_events[SCRD] = rem_events[SCRD] + 1
+
+                        if (rem_events[LMC] > 1):
+                                sounds = prev_soundset()
+                                rem_events[LMC] = rem_events[LMC] % 2
+                        elif (rem_events[RMC] > 1):
+                                sounds = next_soundset()
+                                rem_events[RMC] = rem_events[RMC] % 2
+                        elif (rem_events[SCRD] > 1):
+                                sounds = dec_volume(sounds)
+                                rem_events[SCRD] = rem_events[SCRD] % 2
+                        elif (rem_events[SCRU] > 1):
+                                sounds = inc_volume(sounds)
+                                rem_events[SCRU] = rem_events[SCRU] % 2
+                except:
+			pass
+                        # TODO there should be something here along the lines of time.sleep(0.5)
+			# perhaps put this on a separate thread.
+
 	else: # Interupt pin is low
 
 		touchData = mpr121.readWordData(0x5a)
@@ -111,19 +160,8 @@ while True:
 			if (touchData & (1<<i)):
 
 				if (touches[i] == 0):
-
 					#print( 'Pin ' + str(i) + ' was just touched')
-
-					if (i < 8):
-						sounds[i].play()
-					elif (i == 8):
-						sounds = prev_soundset()
-					elif (i == 9):
-						sounds = next_soundset()
-					elif (i == 10):
-						sounds = dec_volume(sounds)
-					elif (i == 11):
-						sounds = inc_volume(sounds)
+					sounds[i].play()
 
 				touches[i] = 1;
 			else:
