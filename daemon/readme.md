@@ -7,18 +7,24 @@ Make sure the TalkBox folder is in /home/pi/
 
 Move the talkbox.sh script into /etc/init.d:
 
-```sudo cp talkbox.sh /etc/init.d```
+```
+sudo cp talkbox.sh /etc/init.d
+```
 
 To actually add it to rc.d directories, run:
 
-```sudo update-rc.d talkbox.sh defaults```
+```
+sudo update-rc.d talkbox.sh defaults
+```
 
 
 
 And you are done!
 
 In case you make modifications to TalkBox, run:
-```sudo /etc/init.d/talkbox.sh stop; sudo /etc/init.d/talkbox.sh start;```
+```
+sudo /etc/init.d/talkbox.sh stop; sudo /etc/init.d/talkbox.sh start;
+```
 
 or just reboot the Pi.
 
