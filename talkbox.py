@@ -15,10 +15,10 @@ import RPi.GPIO as GPIO
 import mpr121
 
 # Some constants
-LMC = 0;
-RMC = 1;
-SCRU = 2;
-SCRD = 3;
+LMC = 0
+RMC = 1
+SCRU = 2
+SCRD = 3
 
 # Initialize the mouse - count on only one mouse being plugged in
 paths = glob.glob('/dev/input/by-path/*-event-mouse')
@@ -108,14 +108,14 @@ pygame.mixer.pre_init(44100, -16, 12, 512)
 pygame.init()
 
 
-pop_sound = create_sound('sounds/pop.wav')
+pop_sound = create_sound('/home/pi/TalkBox/sounds/pop.wav')
 soundsets = get_soundsets('/home/pi/TalkBox/sounds')
 # TODO soundsets = soundsets + get_soundsets('/path/to/USB/mount')
 sounds = next_soundset()
 
 
 # Track touches
-touches = [0,0,0,0,0,0,0,0,0,0,0,0];
+touches = [0,0,0,0,0,0,0,0,0,0,0,0]
 # Each click is two events (push down and push up). This is to ensure one action per two events.
 rem_events = {LMC: 0, RMC: 0, SCRU: 0, SCRD: 0}
 
@@ -163,8 +163,8 @@ while True:
 					#print( 'Pin ' + str(i) + ' was just touched')
 					sounds[i].play()
 
-				touches[i] = 1;
+				touches[i] = 1
 			else:
 				#if (touches[i] == 1):
 					#print( 'Pin ' + str(i) + ' was just released')
-				touches[i] = 0;
+				touches[i] = 0
