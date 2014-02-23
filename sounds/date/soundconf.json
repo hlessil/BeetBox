@@ -1,29 +1,29 @@
 {
-  "soundset_name": "weather",
-  "soundset_filename": "weather.wav",
+  "soundset_name": "date",
+  "soundset_filename": "date.wav",
   "sounds": {
     "0": {
-      "filename":"sunny.wav",
+      "filename":"yes.wav",
       "image": "",
       "description": ""
     },
     "1": {
-      "filename":"cloudy.wav",
+      "filename":"no.wav",
       "image": "",
       "description": ""
     },
     "2": {
-      "filename":"windy.wav",
+      "filename":"",
       "image": "",
       "description": ""
     },
     "3": {
-      "filename":"raining.wav",
+      "filename":"",
       "image": "",
       "description": ""
     },
     "4": {
-      "filename":"snowing.wav",
+      "filename":"",
       "image": "",
       "description": ""
     },
