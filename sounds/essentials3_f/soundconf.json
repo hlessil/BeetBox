@@ -1,24 +1,24 @@
 {
-  "soundset_name": "attendance",
-  "soundset_filename": "attendance.wav",
+  "soundset_name": "essentials3_f",
+  "soundset_filename": "essentials3_f.wav",
   "sounds": {
     "0": {
-      "filename":"",
+      "filename":"go_for_walk.wav",
       "image": "",
       "description": ""
     },
     "1": {
-      "filename":"",
+      "filename":"need_washroom.wav",
       "image": "",
       "description": ""
     },
     "2": {
-      "filename":"",
+      "filename":"like_more.wav",
       "image": "",
       "description": ""
     },
     "3": {
-      "filename":"",
+      "filename":"too_noisy.wav",
       "image": "",
       "description": ""
     },

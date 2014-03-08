@@ -42,6 +42,7 @@ def get_soundsets(soundset_dir):
 			soundconf = json.load(open(root + os.sep + CONF_JSON, 'r'))
 			soundconf['rootdir'] = root
 			soundsets.append(soundconf)
+	soundsets.sort()
 	return soundsets
 
 

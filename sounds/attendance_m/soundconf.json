@@ -1,64 +1,64 @@
 {
-  "soundset_name": "essentials1",
-  "soundset_filename": "essentials1.wav",
+  "soundset_name": "attendance_m",
+  "soundset_filename": "attendance_m.wav",
   "sounds": {
     "0": {
-      "filename":"yes.wav",
+      "filename":"good_morning_m.wav",
       "image": "",
       "description": ""
     },
     "1": {
-      "filename":"no.wav",
+      "filename":"attendance_please_m.wav",
       "image": "",
       "description": ""
     },
     "2": {
-      "filename":"hello.wav",
+      "filename":"thank_you_m.wav",
       "image": "",
       "description": ""
     },
     "3": {
-      "filename":"goodbye.wav",
+      "filename":"youre_welcome_m.wav",
       "image": "",
       "description": ""
     },
     "4": {
-      "filename":"thank_you.wav",
+      "filename":"good_bye_m.wav",
       "image": "",
       "description": ""
     },
     "5": {
-      "filename":"youre_welcome.wav",
+      "filename":"here_you_go_m.wav",
       "image": "",
       "description": ""
     },
     "6": {
-      "filename":"need_suction.wav",
+      "filename":"",
       "image": "",
       "description": ""
     },
     "7": {
-      "filename":"feel_sick.wav",
+      "filename":"",
       "image": "",
       "description": ""
     },
     "8": {
-      "filename":"mouth_dry.wav",
+      "filename":"",
       "image": "",
       "description": ""
     },
     "9": {
-      "filename":"need_help.wav",
+      "filename":"",
       "image": "",
       "description": ""
     },
     "10": {
-      "filename":"need_break.wav",
+      "filename":"",
       "image": "",
       "description": ""
     },
     "11": {
-      "filename":"upset.wav",
+      "filename":"",
       "image": "",
       "description": ""
     }
