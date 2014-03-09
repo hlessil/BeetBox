@@ -21,7 +21,7 @@ To be updated as the project takes shape:
 - dd image onto SD card.
 - Plug MPR121 board into GPIO
 - Plug into electricity and use
-- For modifications modify JSON, use GUI, or web interface (will pick and develop one for now).
+- For additional soundsets, see sounds/README.md
 
 TIPS
 ====
