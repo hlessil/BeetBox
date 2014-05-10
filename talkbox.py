@@ -172,5 +172,10 @@ class InputDeviceDispatcher(file_dispatcher):
 	def handle_read(self):
 		handleMouse(self.recv())
 
-InputDeviceDispatcher(dev)
-loop()
+if (dev != None):
+	InputDeviceDispatcher(dev)
+	loop()
+else:
+	while True:
+		# just a hacky way to run an infinite loop without 100% cpu usage
+		time.sleep(9001)
